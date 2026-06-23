@@ -9,6 +9,12 @@ description = "Automated invoice generation library with dynamic templates, cust
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
+    "weasyprint>=61.0",
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest>=8.0.0",
 ]
 
 [tool.setuptools.packages.find]
