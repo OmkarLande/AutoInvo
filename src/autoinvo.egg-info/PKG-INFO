@@ -1,0 +1,12 @@
+Metadata-Version: 2.4
+Name: autoinvo
+Version: 0.1.0
+Summary: Automated invoice generation library with dynamic templates, custom mapping, and SMTP delivery.
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: weasyprint>=61.0
+Provides-Extra: test
+Requires-Dist: pytest>=8.0.0; extra == "test"
+
+# AutoInvo
+Automated invoice generation library with dynamic templates, custom mapping, and SMTP delivery.

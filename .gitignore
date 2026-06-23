@@ -1,1 +1,8 @@
-.venv
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+gtk3-runtime/
+*.exe
+*.pdf
+tmp/
