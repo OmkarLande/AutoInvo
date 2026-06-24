@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice - Modern Design</title>
+    <link rel="stylesheet" href="styles/modern.css">
+</head>
+<body>
+    <div class="invoice-container">
+        <!-- Header -->
+        <div class="header">
+            <div>
+                <div class="company-name">TechVision Labs</div>
+                <div class="company-details">
+                    <div>789 Innovation Drive, San Francisco, CA 94105</div>
+                    <div>hello@techvisionlabs.com | (415) 555-8901 | www.techvisionlabs.com</div>
+                </div>
+            </div>
+            <div class="invoice-title">
+                <div class="invoice-number">INV-2024-001234</div>
+                <div class="invoice-status">PAID</div>
+            </div>
+        </div>
+
+        <!-- Invoice Meta Information -->
+        <div class="invoice-meta">
+            <div class="meta-section">
+                <div class="meta-label">Invoice Date</div>
+                <div class="meta-value">June 24, 2024</div>
+            </div>
+            <div class="meta-section">
+                <div class="meta-label">Due Date</div>
+                <div class="meta-value">July 24, 2024</div>
+            </div>
+            <div class="meta-section">
+                <div class="meta-label">Payment Method</div>
+                <div class="meta-value">Bank Transfer</div>
+            </div>
+            <div class="meta-section">
+                <div class="meta-label">PO Reference</div>
+                <div class="meta-value">PO-2024-8901</div>
+            </div>
+        </div>
+
+        <!-- Addresses -->
+        <div class="addresses">
+            <div class="address-block">
+                <div class="address-title">Bill To</div>
+                <div class="address-content">
+                    <strong>Sarah Johnson</strong><br>
+                    Digital Solutions Inc.<br>
+                    2000 Market Street, Suite 500<br>
+                    San Francisco, CA 94102<br>
+                    sarah.johnson@digitalsolutions.com
+                </div>
+            </div>
+            <div class="address-block">
+                <div class="address-title">Ship To</div>
+                <div class="address-content">
+                    <strong>Sarah Johnson</strong><br>
+                    Digital Solutions Inc.<br>
+                    2000 Market Street, Suite 500<br>
+                    San Francisco, CA 94102
+                </div>
+            </div>
+        </div>
+
+        <!-- Line Items -->
+        <table class="items-table">
+            <thead>
+                <tr>
+                    <th>Item Description</th>
+                    <th class="col-qty text-right">Quantity</th>
+                    <th class="col-price text-right">Unit Price</th>
+                    <th class="col-amount text-right">Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Brand Identity Design Package</td>
+                    <td class="col-qty text-right">1</td>
+                    <td class="col-price text-right">$2,500.00</td>
+                    <td class="col-amount text-right">$2,500.00</td>
+                </tr>
+                <tr>
+                    <td>Website Design & Development</td>
+                    <td class="col-qty text-right">60</td>
+                    <td class="col-price text-right">$80.00</td>
+                    <td class="col-amount text-right">$4,800.00</td>
+                </tr>
+                <tr>
+                    <td>Content Strategy & SEO Optimization</td>
+                    <td class="col-qty text-right">12</td>
+                    <td class="col-price text-right">$120.00</td>
+                    <td class="col-amount text-right">$1,440.00</td>
+                </tr>
+                <tr>
+                    <td>User Testing & Refinement</td>
+                    <td class="col-qty text-right">10</td>
+                    <td class="col-price text-right">$95.00</td>
+                    <td class="col-amount text-right">$950.00</td>
+                </tr>
+                <tr>
+                    <td>Deployment & Launch Support</td>
+                    <td class="col-qty text-right">5</td>
+                    <td class="col-price text-right">$150.00</td>
+                    <td class="col-amount text-right">$750.00</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Totals -->
+        <div class="totals">
+            <div class="totals-table">
+                <div class="total-row subtotal">
+                    <span>Subtotal</span>
+                    <span class="amount">$10,440.00</span>
+                </div>
+                <div class="total-row tax">
+                    <span>Sales Tax (8.625%)</span>
+                    <span class="amount">$900.27</span>
+                </div>
+                <div class="total-row final">
+                    <span class="label">Total Due</span>
+                    <span class="amount">$11,340.27</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notes Section -->
+        <div class="notes-section">
+            <div class="notes-title">Terms & Notes</div>
+            <div class="notes">
+                <strong>Payment Terms:</strong> Net 30 days from invoice date<br>
+                <strong>Banking Details:</strong> Wire transfers preferred. Please reference invoice number with payment.<br><br>
+                Thank you for choosing TechVision Labs! We appreciate your business and look forward to our continued partnership. If you have any questions about this invoice, please don't hesitate to contact us.
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>© 2024 TechVision Labs. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>

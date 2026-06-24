@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice - Minimal Design</title>
+    <link rel="stylesheet" href="styles/minimal.css">
+</head>
+<body>
+    <div class="invoice-container">
+        <!-- Header -->
+        <div class="header">
+            <div class="company-name">ACME Corporation</div>
+            <div class="company-details">
+                <div>123 Business Street</div>
+                <div>New York, NY 10001</div>
+                <div>contact@acme.com | (555) 123-4567</div>
+            </div>
+            <div class="invoice-title">INVOICE</div>
+        </div>
+
+        <!-- Invoice Meta Information -->
+        <div class="invoice-meta">
+            <div class="meta-section">
+                <div class="meta-label">Invoice Number</div>
+                <div class="meta-value">INV-2024-001234</div>
+            </div>
+            <div class="meta-section">
+                <div class="meta-label">Invoice Date</div>
+                <div class="meta-value">June 24, 2024</div>
+            </div>
+            <div class="meta-section">
+                <div class="meta-label">Due Date</div>
+                <div class="meta-value">July 24, 2024</div>
+            </div>
+            <div class="meta-section">
+                <div class="meta-label">PO Number</div>
+                <div class="meta-value">PO-2024-5678</div>
+            </div>
+        </div>
+
+        <!-- Addresses -->
+        <div class="addresses">
+            <div class="address-block">
+                <div class="address-title">Bill To:</div>
+                <div class="address-content">
+                    <strong>John Smith</strong><br>
+                    ABC Company<br>
+                    456 Client Avenue<br>
+                    Los Angeles, CA 90001<br>
+                    john.smith@abcco.com
+                </div>
+            </div>
+            <div class="address-block">
+                <div class="address-title">Ship To:</div>
+                <div class="address-content">
+                    <strong>John Smith</strong><br>
+                    ABC Company<br>
+                    456 Client Avenue<br>
+                    Los Angeles, CA 90001
+                </div>
+            </div>
+        </div>
+
+        <!-- Line Items -->
+        <table class="items-table">
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    <th class="col-qty text-right">Qty</th>
+                    <th class="col-price text-right">Unit Price</th>
+                    <th class="col-amount text-right">Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Web Design Services - Homepage</td>
+                    <td class="col-qty text-right">1</td>
+                    <td class="col-price text-right">$1,500.00</td>
+                    <td class="col-amount text-right">$1,500.00</td>
+                </tr>
+                <tr>
+                    <td>Frontend Development</td>
+                    <td class="col-qty text-right">40</td>
+                    <td class="col-price text-right">$75.00</td>
+                    <td class="col-amount text-right">$3,000.00</td>
+                </tr>
+                <tr>
+                    <td>Database Setup & Configuration</td>
+                    <td class="col-qty text-right">8</td>
+                    <td class="col-price text-right">$100.00</td>
+                    <td class="col-amount text-right">$800.00</td>
+                </tr>
+                <tr>
+                    <td>Testing & QA</td>
+                    <td class="col-qty text-right">16</td>
+                    <td class="col-price text-right">$60.00</td>
+                    <td class="col-amount text-right">$960.00</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Totals -->
+        <div class="totals">
+            <div class="totals-table">
+                <div class="total-row">
+                    <span>Subtotal:</span>
+                    <span class="amount">$6,260.00</span>
+                </div>
+                <div class="total-row">
+                    <span>Tax (10%):</span>
+                    <span class="amount">$626.00</span>
+                </div>
+                <div class="total-row final">
+                    <span>TOTAL DUE:</span>
+                    <span class="amount">$6,886.00</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notes -->
+        <div class="notes">
+            <div class="notes-title">Payment Terms & Notes:</div>
+            <p>Thank you for your business! Please remit payment by the due date. Payment methods accepted: wire transfer, check, or credit card. Late payments subject to 1.5% monthly interest charge.</p>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>Thank you for your business!</p>
+            <p>This is a computer generated invoice. No signature required.</p>
+        </div>
+    </div>
+</body>
+</html>
