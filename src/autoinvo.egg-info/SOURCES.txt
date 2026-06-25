@@ -1,5 +1,6 @@
 README.md
 pyproject.toml
+src/autoinvo/__init__.py
 src/autoinvo.egg-info/PKG-INFO
 src/autoinvo.egg-info/SOURCES.txt
 src/autoinvo.egg-info/dependency_links.txt
@@ -13,6 +14,10 @@ src/autoinvo/pdf/__init__.py
 src/autoinvo/pdf/contracts.py
 src/autoinvo/pdf/exceptions.py
 src/autoinvo/pdf/generator.py
+src/autoinvo/pdf/models.py
 src/autoinvo/pdf/weasyprint_engine.py
 src/autoinvo/storage/__init__.py
 src/autoinvo/templates/__init__.py
+tests/test_jinja2_templates.py
+tests/test_pdf.py
+tests/test_templates.py

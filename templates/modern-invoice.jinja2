@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice - {{ company.name }}</title>
+    <link rel="stylesheet" href="styles/modern.css">
+</head>
+<body>
+    <div class="invoice-container">
+        <!-- Header -->
+        <div class="header">
+            <div>
+                <div class="company-name">{{ company.name }}</div>
+                <div class="company-details">
+                    <div>{{ company.address }}, {{ company.city }}, {{ company.state }} {{ company.zip }}</div>
+                    <div>{{ company.email }} | {{ company.phone }} | {{ company.website }}</div>
+                </div>
+            </div>
+            <div class="invoice-title">
+                <div class="invoice-number">{{ invoice.number }}</div>
+                <div class="invoice-status">{{ invoice.status|upper }}</div>
+            </div>
+        </div>
+
+        <!-- Invoice Meta Information -->
+        <div class="invoice-meta">
+            <div class="meta-section">
+                <div class="meta-label">Invoice Date</div>
+                <div class="meta-value">{{ invoice.date }}</div>
+            </div>
+            <div class="meta-section">
+                <div class="meta-label">Due Date</div>
+                <div class="meta-value">{{ invoice.due_date }}</div>
+            </div>
+            <div class="meta-section">
+                <div class="meta-label">Payment Method</div>
+                <div class="meta-value">{{ invoice.payment_method }}</div>
+            </div>
+            <div class="meta-section">
+                <div class="meta-label">PO Reference</div>
+                <div class="meta-value">{{ invoice.po_number }}</div>
+            </div>
+        </div>
+
+        <!-- Addresses -->
+        <div class="addresses">
+            <div class="address-block">
+                <div class="address-title">Bill To</div>
+                <div class="address-content">
+                    <strong>{{ client.name }}</strong><br>
+                    {{ client.company }}<br>
+                    {{ client.address }}<br>
+                    {{ client.city }}, {{ client.state }} {{ client.zip }}<br>
+                    {{ client.email }}
+                </div>
+            </div>
+            <div class="address-block">
+                <div class="address-title">Ship To</div>
+                <div class="address-content">
+                    <strong>{{ shipping.name }}</strong><br>
+                    {{ shipping.company }}<br>
+                    {{ shipping.address }}<br>
+                    {{ shipping.city }}, {{ shipping.state }} {{ shipping.zip }}
+                </div>
+            </div>
+        </div>
+
+        <!-- Line Items -->
+        <table class="items-table">
+            <thead>
+                <tr>
+                    <th>Item Description</th>
+                    <th class="col-qty text-right">Quantity</th>
+                    <th class="col-price text-right">Unit Price</th>
+                    <th class="col-amount text-right">Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                <tr>
+                    <td>{{ item.description }}</td>
+                    <td class="col-qty text-right">{{ item.quantity }}</td>
+                    <td class="col-price text-right">${{ "%.2f"|format(item.unit_price) }}</td>
+                    <td class="col-amount text-right">${{ "%.2f"|format(item.quantity * item.unit_price) }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- Totals -->
+        <div class="totals">
+            <div class="totals-table">
+                <div class="total-row subtotal">
+                    <span>Subtotal</span>
+                    <span class="amount">${{ "%.2f"|format(totals.subtotal) }}</span>
+                </div>
+                <div class="total-row tax">
+                    <span>Sales Tax ({{ tax_rate * 100 }}%)</span>
+                    <span class="amount">${{ "%.2f"|format(totals.tax) }}</span>
+                </div>
+                <div class="total-row final">
+                    <span class="label">Total Due</span>
+                    <span class="amount">${{ "%.2f"|format(totals.total) }}</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notes Section -->
+        <div class="notes-section">
+            <div class="notes-title">Terms & Notes</div>
+            <div class="notes">
+                <strong>Payment Terms:</strong> {{ invoice.payment_terms }}<br>
+                {% if invoice.banking_details %}
+                <strong>Banking Details:</strong> {{ invoice.banking_details }}<br><br>
+                {% endif %}
+                {{ invoice.notes }}
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>© {{ company.year }} {{ company.name }}. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>
