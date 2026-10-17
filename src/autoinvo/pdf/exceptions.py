@@ -1,6 +1,9 @@
 """Custom exceptions for the autoinvo PDF module."""
 
-class PdfGenerationError(Exception):
+from autoinvo.exceptions import AutoInvoError
+
+
+class PdfGenerationError(AutoInvoError):
     """Custom exception raised when PDF generation fails.
 
     This exception allows wrapping an underlying original exception for debugging purposes,

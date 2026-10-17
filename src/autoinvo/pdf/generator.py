@@ -43,7 +43,7 @@ class PdfGenerator:
         opts = options or PdfOptions()
 
         try:
-            return self.engine.generate(html, opts)
+            pdf_bytes = self.engine.generate(html, opts)
         except PdfGenerationError:
             # Propagate our own errors directly
             raise
@@ -53,3 +53,12 @@ class PdfGenerator:
                 f"Unexpected error during PDF generation: {str(e)}",
                 original_exception=e
             ) from e
+
+        if not isinstance(pdf_bytes, bytes) or not pdf_bytes.startswith(b"%PDF"):
+            error = ValueError("PDF engine returned an invalid or empty PDF document.")
+            raise PdfGenerationError(
+                str(error),
+                original_exception=error
+            ) from error
+
+        return pdf_bytes

@@ -4,6 +4,7 @@ from autoinvo.importers.contracts import DataImporter, ImportSource
 from autoinvo.importers.csv_importer import CsvImporter
 from autoinvo.importers.xlsx_importer import XlsxImporter
 from autoinvo.importers.models import ImportResult, CsvImportOptions, XlsxImportOptions
+from autoinvo.importers.exceptions import ImportError
 
 class ImportService:
     """Service layer for handling data imports.
@@ -38,7 +39,12 @@ class ImportService:
         Raises:
             ImportError: If parsing fails or input is invalid.
         """
-        return self._csv_importer.parse(source, options)
+        try:
+            return self._csv_importer.parse(source, options)
+        except ImportError:
+            raise
+        except Exception as e:
+            raise ImportError(f"Unexpected error during CSV import: {e}", original_exception=e) from e
 
     def import_xlsx(self, source: ImportSource, options: XlsxImportOptions | None = None) -> ImportResult:
         """Imports data from an XLSX source.
@@ -53,4 +59,9 @@ class ImportService:
         Raises:
             ImportError: If parsing fails or input is invalid.
         """
-        return self._xlsx_importer.parse(source, options)
+        try:
+            return self._xlsx_importer.parse(source, options)
+        except ImportError:
+            raise
+        except Exception as e:
+            raise ImportError(f"Unexpected error during XLSX import: {e}", original_exception=e) from e

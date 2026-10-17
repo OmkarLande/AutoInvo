@@ -72,7 +72,7 @@ class CsvImporter(DataImporter):
             except StopIteration:
                 raise ImportError("CSV is empty")
             except Exception as e:
-                raise ImportError(f"Failed to read CSV: {e}", original_exception=e)
+                raise ImportError(f"Failed to read CSV: {e}", original_exception=e) from e
                 
             if not raw_headers:
                 raise ImportError("CSV contains empty headers")
@@ -111,9 +111,9 @@ class CsvImporter(DataImporter):
         except ImportError:
             raise
         except UnicodeDecodeError as e:
-            raise ImportError(f"Failed to decode CSV with encoding {options.encoding}: {e}", original_exception=e)
+            raise ImportError(f"Failed to decode CSV with encoding {options.encoding}: {e}", original_exception=e) from e
         except Exception as e:
-            raise ImportError(f"Error parsing CSV: {e}", original_exception=e)
+            raise ImportError(f"Error parsing CSV: {e}", original_exception=e) from e
         finally:
             if text_io:
                 text_io.detach()

@@ -1,5 +1,6 @@
 """autoinvo: Automated PDF Generation library."""
 
+from autoinvo.exceptions import AutoInvoError
 from autoinvo.core.autoinvo import AutoInvo
 from autoinvo.pdf.contracts import PdfEngine
 from autoinvo.pdf.models import PdfOptions
@@ -10,6 +11,7 @@ from autoinvo.importers.models import ImportResult, CsvImportOptions, XlsxImport
 
 __all__ = [
     "AutoInvo",
+    "AutoInvoError",
     "PdfEngine",
     "PdfOptions",
     "PdfGenerationError",

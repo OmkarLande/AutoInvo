@@ -60,7 +60,7 @@ class XlsxImporter(DataImporter):
                 # Use data_only=True to evaluate formulas to values
                 wb = openpyxl.load_workbook(file_obj, data_only=True)
             except Exception as e:
-                raise ImportError(f"Invalid or empty workbook: {e}", original_exception=e)
+                raise ImportError(f"Invalid or empty workbook: {e}", original_exception=e) from e
                 
             if not wb.sheetnames:
                 raise ImportError("Workbook is empty")
@@ -125,7 +125,7 @@ class XlsxImporter(DataImporter):
         except ImportError:
             raise
         except Exception as e:
-            raise ImportError(f"Error parsing XLSX: {e}", original_exception=e)
+            raise ImportError(f"Error parsing XLSX: {e}", original_exception=e) from e
         finally:
             if wb:
                 wb.close()

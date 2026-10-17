@@ -136,6 +136,20 @@ def test_unexpected_engine_exception_wrapping() -> None:
     assert isinstance(exc_info.value.original_exception, ValueError)
 
 
+@pytest.mark.parametrize("engine_result", [None, "not a pdf", b""])
+def test_invalid_engine_result_raises_pdf_generation_error(engine_result: object) -> None:
+    class InvalidResultEngine(PdfEngine):
+        def generate(self, html: str, options: PdfOptions | None = None) -> bytes:
+            return engine_result  # type: ignore[return-value]
+
+    autoinvo = AutoInvo(engine=InvalidResultEngine())
+
+    with pytest.raises(PdfGenerationError, match="invalid or empty PDF") as exc_info:
+        autoinvo.generate_pdf("<p>Test</p>")
+
+    assert isinstance(exc_info.value.original_exception, ValueError)
+
+
 def test_special_character_and_currency_rendering() -> None:
     """Verifies that emojis, currency symbols, Kanji, and Cyrillic character sets render without corruption or crash."""
     autoinvo = AutoInvo()

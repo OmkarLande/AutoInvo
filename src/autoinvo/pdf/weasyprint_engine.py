@@ -41,24 +41,24 @@ class WeasyPrintEngine(PdfEngine):
         Raises:
             PdfGenerationError: If the document rendering or layout compilation fails.
         """
-        opts = options or PdfOptions()
-
-        # Build @page rule to configure page size, orientation, and margins
-        size_part = f"{opts.page_size}"
-        if opts.landscape:
-            size_part += " landscape"
-
-        css_string = f"""
-        @page {{
-            size: {size_part};
-            margin-top: {opts.margin_top};
-            margin-right: {opts.margin_right};
-            margin-bottom: {opts.margin_bottom};
-            margin-left: {opts.margin_left};
-        }}
-        """
-
         try:
+            opts = options or PdfOptions()
+
+            # Build @page rule to configure page size, orientation, and margins
+            size_part = f"{opts.page_size}"
+            if opts.landscape:
+                size_part += " landscape"
+
+            css_string = f"""
+            @page {{
+                size: {size_part};
+                margin-top: {opts.margin_top};
+                margin-right: {opts.margin_right};
+                margin-bottom: {opts.margin_bottom};
+                margin-left: {opts.margin_left};
+            }}
+            """
+
             # HTML input compiled entirely in memory.
             # Passing base_url allows resolving local/remote assets like images and stylesheets.
             url_fetcher = None
@@ -80,7 +80,7 @@ class WeasyPrintEngine(PdfEngine):
             if not pdf_bytes:
                 raise ValueError("WeasyPrint returned empty PDF bytes.")
             return pdf_bytes
-        except (Exception, FatalURLFetchingError) as e:
+        except Exception as e:
             logger.error("Failed to generate PDF with WeasyPrint: %s", str(e), exc_info=True)
             raise PdfGenerationError(
                 message=f"WeasyPrint engine failed to generate PDF: {str(e)}",

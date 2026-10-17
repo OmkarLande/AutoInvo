@@ -1,6 +1,9 @@
 """Exceptions for the Data Import Engine."""
 
-class ImportError(Exception):
+from autoinvo.exceptions import AutoInvoError
+
+
+class ImportError(AutoInvoError):
     """Exception raised for errors during the data import process."""
     
     def __init__(self, message: str, original_exception: Exception | None = None) -> None:
