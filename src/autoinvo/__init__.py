@@ -2,12 +2,14 @@
 
 from autoinvo.exceptions import AutoInvoError
 from autoinvo.core.autoinvo import AutoInvo
-from autoinvo.pdf.contracts import PdfEngine
-from autoinvo.pdf.models import PdfOptions
-from autoinvo.pdf.exceptions import PdfGenerationError
 from autoinvo.importers.contracts import DataImporter
 from autoinvo.importers.exceptions import ImportError
-from autoinvo.importers.models import ImportResult, CsvImportOptions, XlsxImportOptions
+from autoinvo.importers.models import CsvImportOptions, ImportResult, XlsxImportOptions
+from autoinvo.pdf.contracts import PdfEngine
+from autoinvo.pdf.exceptions import PdfGenerationError
+from autoinvo.pdf.models import PdfOptions
+from autoinvo.templates.contracts import TemplateData, TemplateRenderOptions, TemplateRenderer
+from autoinvo.templates.service import JinjaTemplateConfig, JinjaTemplateRenderer
 
 __all__ = [
     "AutoInvo",
@@ -20,4 +22,9 @@ __all__ = [
     "ImportResult",
     "CsvImportOptions",
     "XlsxImportOptions",
+    "TemplateRenderer",
+    "TemplateRenderOptions",
+    "TemplateData",
+    "JinjaTemplateConfig",
+    "JinjaTemplateRenderer",
 ]
